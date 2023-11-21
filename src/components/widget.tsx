@@ -22,10 +22,10 @@ function WidgetContent( { icon: Icon, value, color, isActive, children} : Widget
 {
     return (
         <div className="flex flex-col items-center">
-            <div className={cn("group flex items-center md:hover:bg-neutral-100 rounded-xl px-2 py-1", isActive ? color : "text-gray-400") }>
-                <Icon className={cn("w-5 h-5", value && "mr-3")} />
+            <div className={cn("group flex items-center lg:hover:bg-neutral-100 rounded-lg px-2 py-1", isActive ? color : "text-gray-400") }>
+                <Icon className={cn("w-5 h-5 lg:w-6 lg:h-6")} />
                 { value != null && (
-                    <p className="text-xs md:text-sm">
+                    <p className="text-xs lg:text-sm ml-2 font-medium">
                         {value}
                     </p>
                 )}
