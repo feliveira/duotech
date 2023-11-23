@@ -5,10 +5,10 @@ export default function LivesWidget( )
 {
     return (
         <GenericWidget 
-        icon={Heart} 
+        icon={ Heart } 
         iconFill="fill-red-500"
-        color="text-red-500"
-        value={5}
+        color="text-red-600"
+        value={ 5 }
         isActive
         >
             

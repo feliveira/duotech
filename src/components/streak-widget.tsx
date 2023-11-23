@@ -5,11 +5,11 @@ export default function StreakWidget( )
 {
     return (
         <GenericWidget 
-        icon={Flame} 
+        icon={ Flame } 
         iconFill="fill-orange-500"
-        color="text-orange-500"
-        value={0}
-        isActive={false}
+        color="text-orange-600"
+        value={ 0 }
+        isActive={ false }
         >
 
         </GenericWidget>
