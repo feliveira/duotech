@@ -22,8 +22,8 @@ export default function TopicHeader( { title, description, guideHref, bgColor, s
             </div>
             {
                 guideHref !== null && (
-                    <Link href={guideHref ?? ""} className={cn("px-6 py-4 rounded-xl flex items-center text-white transition-all shadow-[0px_3px_0px_0px_#404040] hover:shadow-[0px_1px_0px_0px_#404040] active:shadow-none active:translate-y-1", secondaryBgColor)}>
-                        <BookText className="w-4 h-4 lg:w-6 lg:h-6 mr-3" />
+                    <Link href={guideHref ?? ""} className={cn("px-6 py-4 rounded-xl flex items-center text-white transition-all hover:opacity-80 border border-[#404040] shadow-[0px_2px_0px_0px_#404040] active:shadow-none active:translate-y-1", secondaryBgColor)}>
+                        <BookText className="w-4 h-4 lg:w-6 lg:h-6 mr-3 text-white" />
                         <p className="text-xs lg:text-sm font-medium uppercase">Guidebook</p>
                     </Link>
                 )
