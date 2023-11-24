@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="flex flex-col items-center md:items-start md:pl-32 lg:pl-40 xl:pl-60 2xl:pl-96 my-16 md:my-10">
+      <main className="flex flex-col items-center md:items-start md:pl-32 lg:pl-40 xl:pl-60 2xl:pl-96 my-14 md:my-10">
         <TopicHeader 
         bgColor="bg-[#3486FF]" 
         secondaryBgColor="bg-[#418EFF]"
