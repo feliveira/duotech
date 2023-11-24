@@ -14,7 +14,7 @@ export default function Navbar( ) {
     const pathName = usePathname( )
 
     return (
-        <div className="fixed bottom-0 md:inset-y-0 md:space-y-4 py-2 flex md:py-6 md:flex-col w-full md:w-fit border-t border-t-neutral-200 md:border-t-0 md:border-r md:border-r-neutral-200 md:h-full bg-white items-center md:items-start justify-center">
+        <div className="h-20 md:h-full fixed bottom-0 md:inset-y-0 md:space-y-4 py-2 flex md:py-6 md:flex-col w-full md:w-fit border-t border-t-neutral-200 md:border-t-0 md:border-r md:border-r-neutral-200 bg-white items-center md:items-start justify-center">
             <div className="px-3 py-2 flex-1">
                 <Link href={"/learn"} className="hidden md:flex w-full px-4 py-1 mb-4">
                     <Bird className="xl:hidden text-darkBlue fill-darkBlue w-8 h-8" />
