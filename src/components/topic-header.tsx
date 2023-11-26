@@ -15,7 +15,7 @@ interface TopicHeaderProps {
 export default function TopicHeader( { title, description, guideHref, bgColor, secondaryBgColor } : TopicHeaderProps )
 {
     return (     
-        <div className={cn("w-full md:max-w-[400px] lg:max-w-[500px] xl:max-w-[560px] 2xl:max-w-[640px] text-white md:rounded-xl px-4 py-6 flex items-center justify-between", bgColor)}>
+        <div className={cn("w-full text-white md:rounded-xl px-4 py-6 flex items-center justify-between", bgColor)}>
             <div className="flex flex-col">
                 <p className="font-bold text-lg lg:text-xl mb-2">{ title }</p>
                 <p className="text-sm lg:text-base font-thin">{ description }</p>
