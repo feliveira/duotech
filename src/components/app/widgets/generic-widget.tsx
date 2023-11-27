@@ -1,7 +1,7 @@
 "use client"
 import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react"
-import { Popover, PopoverContent, PopoverTrigger} from "./ui/popover"
+import { Popover, PopoverContent, PopoverTrigger} from "../ui/popover"
 import { useState } from "react"
 
 interface WidgetProps {

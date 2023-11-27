@@ -18,7 +18,6 @@ export default function Navbar( ) {
             <div className="px-3 py-2 flex-1">
                 <Link href={"/learn"} className="hidden md:flex w-full px-4 py-1 mb-4">
                     <Bird className="xl:hidden text-darkBlue fill-darkBlue w-8 h-8" />
-                    {/* <p className="xl:hidden font-medium text-darkBlue text-3xl">dT</p> */}
                     <p className="hidden xl:flex font-medium text-darkBlue text-3xl">duotech</p>
                 </Link>
                 <div className="space-x-4 md:space-x-0 md:space-y-1 flex md:flex-col h-full items-center justify-center md:justify-start">

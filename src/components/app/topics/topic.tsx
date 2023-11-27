@@ -1,9 +1,10 @@
 
 import { Star, Check, Lock } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-interface TopicProps {
+export interface TopicProps {
     title: string, 
     description: string,
     backgroundColor: string,
@@ -18,13 +19,13 @@ export default function Topic( {title, description, backgroundColor, textColor, 
         <div className={cn(!isActive && "pointer-events-none")}>
             <Popover>
                 <PopoverTrigger asChild>
-                    <button className={cn("text-white transition-all flex items-center justify-center w-16 h-16 border-[3px] border-neutral-700 rounded-full shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1", isActive ? backgroundColor : "bg-neutral-200")}>
+                    <button className={cn("text-white transition-all flex items-center justify-center w-[70px] h-[65px] rounded-full border-[3px] border-neutral-700 shadow-[0px_7px_0px_0px_#404040] active:shadow-none active:translate-y-1", isActive ? backgroundColor : "bg-neutral-200")}>
                         {
                         isFinished ? 
-                        <Check strokeWidth={4} className="w-6 h-6" /> : 
+                        <Check strokeWidth={4} className="w-10 h-8" /> : 
                         isActive ? 
-                        <Star className="w-6 h-6 fill-white" /> :
-                        <Lock className="w-6 h-6 text-neutral-700" />
+                        <Star className="w-10 h-8 fill-white" /> :
+                        <Lock className="w-10 h-8 text-neutral-700" />
                         }
                     </button>
                 </PopoverTrigger>
@@ -34,13 +35,13 @@ export default function Topic( {title, description, backgroundColor, textColor, 
                         <p className="font-light mb-4">{ description }</p>
                         {
                         isFinished ?
-                        <button className={cn("bg-white w-full py-3 rounded-2xl flex items-center mx-auto text-white transition-all hover:opacity-80 shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1")}>
+                        <Link href={"/lesson"} prefetch={false} className={cn("border-[3px] border-neutral-700 bg-white w-full py-3 rounded-2xl flex items-center mx-auto text-white transition-all hover:opacity-80 shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1")}>
                             <p className={cn("text-sm lg:text-base font-semibold uppercase mx-auto", textColor)}>Practice +5 coffees</p>
-                        </button>
+                        </Link>
                         :
-                        <button className={cn("bg-white w-full py-3 rounded-2xl flex items-center mx-auto text-white transition-all hover:opacity-80 shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1")}>
+                        <Link href={"/lesson"} prefetch={false} className={cn("border-[3px] border-neutral-700 bg-white w-full py-3 rounded-2xl flex items-center mx-auto text-white transition-all hover:opacity-80 shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1")}>
                             <p className={cn("text-sm lg:text-base font-semibold uppercase mx-auto", textColor)}>Start +10 coffees</p>
-                        </button>
+                        </Link>
                         }
                     </div>
                 </PopoverContent>
