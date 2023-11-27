@@ -2,7 +2,6 @@ import Navbar from "@/components/navbar";
 import Topic from "@/components/topic";
 import TopicHeader from "@/components/topic-header";
 import WidgetBar from "@/components/widget-bar";
-import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -18,18 +17,13 @@ export default function Home() {
         description="Discussing pertinent topics"
         />
         <Topic 
-        title="Discuss pertinent topics"
-        color="bg-darkBlue"
+        title="All you need to know"
         description="Lesson 1 of 1"
-        >
-          <div className="p-4">
-            <p className="font-semibold text-lg">All you need to know</p>
-            <p className="font-light mb-4">Lesson 1 of 1</p>
-            <button className={cn("bg-white w-full py-3 rounded-2xl flex items-center mx-auto text-white transition-all hover:opacity-80 shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1")}>
-                <p className="text-sm lg:text-lg font-semibold uppercase text-darkBlue mx-auto">Start +10 xp</p>
-            </button>
-          </div>
-        </Topic>
+        backgroundColor="bg-darkBlue"
+        textColor="text-darkBlue"
+        isActive={true}
+        isFinished={false}
+        />  
       </main>
 
       <WidgetBar />
