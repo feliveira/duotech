@@ -22,7 +22,7 @@ export default function Home() {
         backgroundColor="bg-darkBlue"
         textColor="text-darkBlue"
         isActive={true}
-        isFinished={false}
+        isFinished={true}
         />  
       </main>
 

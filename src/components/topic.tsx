@@ -15,7 +15,7 @@ interface TopicProps {
 export default function Topic( {title, description, backgroundColor, textColor, isActive, isFinished} : TopicProps )
 {
     return (
-        <button disabled={ !isActive }>
+        <div className={cn(!isActive && "pointer-events-none")}>
             <Popover>
                 <PopoverTrigger asChild>
                     <button className={cn("text-white transition-all flex items-center justify-center w-16 h-16 border-[3px] border-neutral-700 rounded-full shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1", isActive ? backgroundColor : "bg-neutral-200")}>
@@ -45,7 +45,7 @@ export default function Topic( {title, description, backgroundColor, textColor, 
                     </div>
                 </PopoverContent>
             </Popover>
-        </button>
+        </div>
         
     )
 }
