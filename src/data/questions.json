@@ -1,50 +1,62 @@
 [
     {
       "question": "Preferred way to declare variables?",
-      "answers": ["let", "const", "var", "it depends"]
+      "answers": ["let", "const", "var", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Media query breakpoint strategy?",
-      "answers": ["Mobile-first", "desktop-first", "fluid", "it depends"]
+      "answers": ["Mobile-first", "desktop-first", "fluid", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Best framework for frontend?",
-      "answers": ["React", "Vue", "Angular", "Svelte", "Ember", "it depends"]
+      "answers": ["React", "Vue", "Angular", "Svelte", "Ember", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Best framework for backend?",
-      "answers": ["Django", "Flask", "Ruby on Rails", "Express", "it depends"]
+      "answers": ["Django", "Flask", "Ruby on Rails", "Express", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Best database?",
-      "answers": ["MongoDB", "MySQL", "PostgreSQL", "it depends"]
+      "answers": ["MongoDB", "MySQL", "PostgreSQL", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Best way to optimize images?",
-      "answers": ["Compression", "lazy loading", "resizing", "it depends"]
+      "answers": ["Compression", "lazy loading", "resizing", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Authentication method?",
-      "answers": ["OAuth", "JWT", "API key", "it depends"]
+      "answers": ["OAuth", "JWT", "API key", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Git branching model?",
-      "answers": ["Feature branch", "Gitflow", "GitHub flow", "it depends"]
+      "answers": ["Feature branch", "Gitflow", "GitHub flow", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Webpack or Parcel?",
-      "answers": ["Webpack", "Parcel", "Rollup", "Gulp", "Browserify", "it depends"]
+      "answers": ["Webpack", "Parcel", "Rollup", "Gulp", "Browserify", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Unit tests or end-to-end tests?",
-      "answers": ["Unit tests", "end-to-end tests", "Jest", "Cypress", "Mocha", "it depends"]
+      "answers": ["Unit tests", "end-to-end tests", "Jest", "Cypress", "Mocha", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Preferred cloud platform?",
-      "answers": ["AWS", "GCP", "Azure", "it depends"]
+      "answers": ["AWS", "GCP", "Azure", "it depends"],
+      "solution": ["it depends"]
     },
     {
       "question": "Best documentation format?",
-      "answers": ["Markdown", "HTML", "Docx", "it depends"]
+      "answers": ["Markdown", "HTML", "Docx", "it depends"],
+      "solution": ["it depends"]
     }
   ]
