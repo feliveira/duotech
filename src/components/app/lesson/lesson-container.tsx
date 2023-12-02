@@ -4,6 +4,7 @@ import { useState } from "react"
 import defaultQuestions from "@/data/questions.json"
 import LessonBar from "./lesson-bar"
 import { cn } from "@/lib/utils"
+import 'animate.css';
 
 export default function LessonContainer( )
 {
@@ -27,7 +28,7 @@ export default function LessonContainer( )
     return (
         <div className="flex flex-col items-center mx-auto w-full">
             <LessonBar progress={-1} />
-            <div className="flex flex-col  mx-auto mt-4 max-w-[800px] w-[90%]">
+            <div className="animate__animated animate__fadeInRightBig flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
                 <div className="mx-auto">
                     <h1 className="text-2xl text-neutral-700 font-semibold mb-4">Answer the following question</h1>
                     <div className="flex space-x-2 px-2">
@@ -53,6 +54,11 @@ export default function LessonContainer( )
                         ))
                     }
                 </div>
+            </div>
+            <div className="fixed bottom-0 py-10 border-t w-full flex items-center justify-center">
+                <button className={cn("rounded-xl px-14 py-3 text-xl font-semibold", currentAnswer.length ? "bg-green-500 text-white shadow-[0px_4px_0px_0px_#15803d] active:shadow-none active:translate-y-1" : "bg-neutral-200 text-neutral-600 cursor-default")}>
+                    Check
+                </button>
             </div>
         </div>
     )
