@@ -1,60 +1,72 @@
 [
     {
+      "id": 1,
       "question": "Preferred way to declare variables?",
       "answers": ["let", "const", "var", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 2,
       "question": "Media query breakpoint strategy?",
       "answers": ["Mobile-first", "desktop-first", "fluid", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 3,
       "question": "Best framework for frontend?",
       "answers": ["React", "Vue", "Angular", "Svelte", "Ember", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 4,
       "question": "Best framework for backend?",
       "answers": ["Django", "Flask", "Ruby on Rails", "Express", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 5,
       "question": "Best database?",
       "answers": ["MongoDB", "MySQL", "PostgreSQL", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 6,
       "question": "Best way to optimize images?",
       "answers": ["Compression", "lazy loading", "resizing", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 7,
       "question": "Authentication method?",
       "answers": ["OAuth", "JWT", "API key", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 8,
       "question": "Git branching model?",
       "answers": ["Feature branch", "Gitflow", "GitHub flow", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 9,
       "question": "Webpack or Parcel?",
       "answers": ["Webpack", "Parcel", "Rollup", "Gulp", "Browserify", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 10,
       "question": "Unit tests or end-to-end tests?",
       "answers": ["Unit tests", "end-to-end tests", "Jest", "Cypress", "Mocha", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 11,
       "question": "Preferred cloud platform?",
       "answers": ["AWS", "GCP", "Azure", "it depends"],
       "solution": ["it depends"]
     },
     {
+      "id": 12,
       "question": "Best documentation format?",
       "answers": ["Markdown", "HTML", "Docx", "it depends"],
       "solution": ["it depends"]
