@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
 
-import { useEffect, useState } from "react"
-import defaultQuestions from "@/data/questions.json"
-import LessonBar from "./lesson-bar"
-import { cn } from "@/lib/utils"
 import 'animate.css';
-import { Check, X } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Check, Coffee, Flame, X } from "lucide-react"
+import { Github } from 'lucide-react';
+import { cn } from "@/lib/utils"
+import LessonBar from "./lesson-bar"
+import defaultQuestions from "@/data/questions.json"
+import Link from 'next/link';
 
 export default function LessonContainer( )
 {
@@ -56,6 +58,7 @@ export default function LessonContainer( )
             {
                 if ( !wrongQuestions.length )
                 {
+                    setQuestions(filteredQuestions)
                     completeLesson( )
                     return
                 }
@@ -136,8 +139,6 @@ export default function LessonContainer( )
             (questions.length > 0 || wrongQuestions.length > 0) ?
             <div className="flex flex-col items-center mx-auto w-full">
                 <LessonBar color={getColor( )} progress={progress} />
-                <p>{questions.map(q => `${q.id}-`)}</p>
-                <p>{100 - (((questions.length + wrongQuestions.length) / defaultQuestions.length) * 100)}</p>
                 {
                 showWrongMessage.isShowing ?
                 <div className="animate__animated animate__fadeInRightBig flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
@@ -190,12 +191,12 @@ export default function LessonContainer( )
                                     <p className="text-green-600 font-extrabold text-lg">Correct!</p>
                                     :
                                     <div className="flex flex-col">
-                                        <p className="text-red-500 mb-1 font-extrabold text-lg">Correct Solution:</p>
-                                        <p className="text-sm text-red-500">{currentQuestion.solution[ 0 ]}</p>
+                                        <p className="text-red-500 mb-1 font-extrabold text-sm md:text-lg">Correct Solution:</p>
+                                        <p className="text-xs text-red-500">{currentQuestion.solution[ 0 ]}</p>
                                     </div>
                                 }
                             </div>
-                            <button onClick={proceedQuestionFlow} className={cn("rounded-xl px-14 py-3 text-xl font-semibold text-white active:shadow-none active:translate-y-1", questionCheck.isCorrect ? "bg-green-600 shadow-[0px_4px_0px_0px_#15803d]" : "bg-red-500 shadow-[0px_4px_0px_0px_#b91c1c]")}>
+                            <button onClick={proceedQuestionFlow} className={cn("rounded-xl px-10 md:px-14 py-3 text-xs md:text-xl font-semibold text-white active:shadow-none active:translate-y-1", questionCheck.isCorrect ? "bg-green-600 shadow-[0px_4px_0px_0px_#15803d]" : "bg-red-500 shadow-[0px_4px_0px_0px_#b91c1c]")}>
                                 Continue
                             </button> 
 
@@ -214,27 +215,44 @@ export default function LessonContainer( )
                 </div>
             </div>
             :
-            //Finish screen
-            <div className="flex items-center">
+            <div className="relative w-full h-full flex flex-col justify-between p-2">
+                <div className="flex flex-col lg:flex-row lg:justify-between w-full h-full items-center lg:items-start justify-center gap-4 lg:gap-0 mb-16">
+                    <div className="w-[90%] max-w-[400px] lg:max-w-full lg:w-1/2">
+                        <div className="w-full lg:h-[500px] flex flex-col items-center justify-center border p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tr-none text-center">
+                            <p className="text-darkBlue font-semibold text-2xl mb-4 animate__animated animate__fadeInDown">Congratulations!</p>
+                            <div className="flex flex-col lg:flex-row items-center lg:justify-start justify-center gap-2 animate__animated animate__fadeInLeft">
+                                <div className="w-48 p-1 bg-darkBlue rounded-xl flex flex-col items-center justify-center">
+                                    <p className="text-white font-semibold mb-2 text-sm">Coffees Gained</p>
+                                    <div className="flex items-center justify-center bg-white rounded-[8px] w-full p-4 space-x-2">
+                                        <Coffee className="w-8 h-8 text-blue-600 fill-blue-500" />
+                                        <p className="text-blue-600 font-semibold">+100</p>
+                                    </div>
+                                </div>
+                                <div className="w-48 p-1 bg-orange-600 rounded-xl flex flex-col items-center justify-center">
+                                    <p className="text-white font-semibold mb-2 text-sm">Streak</p>
+                                    <div className="flex items-center justify-center bg-white rounded-[8px] w-full p-4 space-x-2">
+                                        <Flame className="w-8 h-8 text-orange-600 fill-orange-500" />
+                                        <p className="text-orange-600 font-semibold">1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-[90%] max-w-[400px] lg:max-w-full lg:w-1/2">
+                        <div className="lg:h-[500px] flex flex-col items-center justify-center border p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tl-none text-center">
+                            <a href="https://github.com/feliveira" className="flex flex-col items-center justify-center hover:scale-105 transition-all animate__animated animate__fadeInRight" target="_blank">
+                                <Github className="text-darkBlue w-16 h-16" />
+                                <p className="font-semibold text-darkBlue">See more projects</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="fixed bottom-0 bg-white py-10 border-t w-full flex items-center justify-center animate__animated lg:animate__bounceInUp">
+                    <Link href={"/learn"} className="rounded-xl px-14 py-3 text-xl font-semibold bg-green-500 text-white shadow-[0px_4px_0px_0px_#15803d] active:shadow-none active:translate-y-1">
+                        Continue
+                    </Link> 
+                </div>
             </div>
         }
         </>)
 }
-
-
-
-// if( questionCheck.isCorrect )
-// {
-//     const filteredQuestions = questions.filter( q => q.id != currentQuestion.id )
-
-//     if( filteredQuestions.length === 0 )
-//     {
-//         completeLesson( )
-//         return
-//     }   
-
-//     setQuestions( filteredQuestions )
-//     return
-// }
-
-// const corrected
