@@ -2,16 +2,18 @@
 "use client"
 
 import 'animate.css';
-import { useEffect, useState } from "react"
-import { Check, Coffee, Flame, X } from "lucide-react"
-import { Github } from 'lucide-react';
 import { cn } from "@/lib/utils"
-import LessonBar from "./lesson-bar"
 import defaultQuestions from "@/data/questions.json"
+import { useEffect, useState } from "react"
+import { Check, Coffee, Flame, X, Github } from "lucide-react"
+import { useAppContext } from '@/hooks/useAppContext';
+import LessonBar from "./lesson-bar"
+import RefillHeartsDialog from './refill-hearts-dialog';
 import Link from 'next/link';
 
 export default function LessonContainer( )
 {
+    const { lives, setLives, setCoffees, streak, setStreak } = useAppContext( )
     
     const [questions, setQuestions] = useState( defaultQuestions )
     const [wrongQuestions, setWrongQuestions] = useState<typeof currentQuestion[]>( [] )
@@ -20,6 +22,7 @@ export default function LessonContainer( )
     const [currentAnswer, setCurrentAnswer] = useState<string[]>( [ ] )
     const [showWrongMessage, setShowWrongMessage] = useState({alreadyShown: false, isShowing: false});
     const [progress, setProgress] = useState( -1 )
+
     const PROGRESS_COLORS = ["bg-[#00b4d8]", "bg-[#0077b6]", "bg-[#023e8a]"]
 
     const getColor = () => {
@@ -47,6 +50,7 @@ export default function LessonContainer( )
             return
         }
 
+        setLives(lives => lives - 1);
         setQuestionCheck( { isChecking: true, isCorrect: false } )
     }
 
@@ -85,7 +89,7 @@ export default function LessonContainer( )
             return
         }
 
-        if( !wrongQuestions.length )
+        if( !wrongQuestions.length && !questions.length )
         {
             completeLesson( )
             return
@@ -109,8 +113,26 @@ export default function LessonContainer( )
         setCurrentQuestion( wrongQuestions[ 0 ] )
     }
 
+    function checkIfDateIsToday(date : Date) {
+        const today = new Date();
+        return today.toDateString() === date.toDateString()
+    }
+
     const completeLesson = ( ) => {
-        setProgress(100)
+        setProgress( 100 )
+        setCoffees( coffees => coffees + 100 )
+
+        if( !streak )
+        {
+            setStreak( { value: 1, lastDoneDate: new Date( ) } )
+            return
+        }
+
+        if( !checkIfDateIsToday( streak.lastDoneDate ) )
+        {
+            setStreak( state => ( { value: state!.value + 1, lastDoneDate: new Date( ) } ))
+        }
+
     }
 
     useEffect(( ) => {
@@ -138,14 +160,14 @@ export default function LessonContainer( )
         {
             (questions.length > 0 || wrongQuestions.length > 0) ?
             <div className="flex flex-col items-center mx-auto w-full">
-                <LessonBar color={getColor( )} progress={progress} />
+                <LessonBar color={getColor( )} progress={progress} lives={lives} />
                 {
                 showWrongMessage.isShowing ?
                 <div className="animate__animated animate__fadeInRightBig flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
                     <p className="font-semibold text-2xl mx-auto">Let's correct your mistakes!</p>
                 </div>
                 :
-                <div className="animate__animated animate__fadeInRightBig flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
+                <div key={ currentQuestion.id } className="animate__animated animate__fadeInRightBig animate__faster flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
                     <div className="mx-auto">
                         <h1 className="text-2xl text-neutral-700 font-semibold mb-4">Answer the following question</h1>
                         <div className="flex space-x-2 px-2">
@@ -228,13 +250,16 @@ export default function LessonContainer( )
                                         <p className="text-blue-600 font-semibold">+100</p>
                                     </div>
                                 </div>
-                                <div className="w-48 p-1 bg-orange-600 rounded-xl flex flex-col items-center justify-center">
-                                    <p className="text-white font-semibold mb-2 text-sm">Streak</p>
-                                    <div className="flex items-center justify-center bg-white rounded-[8px] w-full p-4 space-x-2">
-                                        <Flame className="w-8 h-8 text-orange-600 fill-orange-500" />
-                                        <p className="text-orange-600 font-semibold">1</p>
+                                {
+                                    streak != null &&
+                                    <div className="w-48 p-1 bg-orange-600 rounded-xl flex flex-col items-center justify-center">
+                                        <p className="text-white font-semibold mb-2 text-sm">Streak</p>
+                                        <div className="flex items-center justify-center bg-white rounded-[8px] w-full p-4 space-x-2">
+                                            <Flame className="w-8 h-8 text-orange-600 fill-orange-500" />
+                                            <p className="text-orange-600 font-semibold">{ streak.value }</p>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -254,5 +279,6 @@ export default function LessonContainer( )
                 </div>
             </div>
         }
+        <RefillHeartsDialog />
         </>)
 }

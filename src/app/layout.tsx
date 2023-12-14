@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Fredoka } from 'next/font/google'
 import '../styles/globals.css'
+import { AppContextProvider } from '@/contexts/app'
 
 const fredoka = Fredoka({ subsets: ['latin'] })
 
@@ -16,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={fredoka.className}>{children}</body>
+      <body className={fredoka.className}>
+        <AppContextProvider>
+          {children}
+        </AppContextProvider>
+      </body>
     </html>
   )
 }

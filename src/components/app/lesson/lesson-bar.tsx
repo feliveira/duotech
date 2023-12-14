@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 
-export default function LessonBar( { progress = -1, color } : { progress: number, color: string } )
+export default function LessonBar( { progress = -1, color, lives } : { progress: number, color: string, lives: number } )
 {
     const router = useRouter( )
 
@@ -62,7 +62,7 @@ export default function LessonBar( { progress = -1, color } : { progress: number
             <Progress color={color} className={cn("w-[60%] bg-neutral-200")} value={ progress } />
             <div className="flex items-center space-x-2">
                 <Heart className="w-8 h-8 fill-red-500 text-red-600" />
-                <p className="text-lg ml-2 font-medium text-red-600">5</p>
+                <p className="text-lg ml-2 font-medium text-red-600">{lives}</p>
             </div>
         </div>
     )

@@ -21,8 +21,6 @@ export default function Home() {
         description="Lesson 1 of 1"
         backgroundColor="bg-darkBlue"
         textColor="text-darkBlue"
-        isActive={true}
-        isFinished={false}
         />
       </main>
 

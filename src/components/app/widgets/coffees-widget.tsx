@@ -1,9 +1,10 @@
 import { Coffee } from "lucide-react";
 import GenericWidget from "./generic-widget";
+import { useAppContext } from "@/hooks/useAppContext";
 
 export default function CoffeesWidget( )
 {
-    const coffees = 500
+    const { coffees } = useAppContext( )
 
     return (
         <GenericWidget 
@@ -11,7 +12,7 @@ export default function CoffeesWidget( )
         iconFill="fill-blue-500"
         color="text-blue-600"
         value={ coffees }
-        isActive
+        isActive={ coffees > 0 }
         >
             <div className="flex space-x-4 items-center justify-center">
                 <div className="p-4 rounded-full border-4 border-blue-600">
