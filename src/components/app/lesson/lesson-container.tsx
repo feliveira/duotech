@@ -3,7 +3,6 @@
 
 import 'animate.css';
 import { cn } from "@/lib/utils"
-import defaultQuestions from "@/data/questions.json"
 import { useEffect, useState } from "react"
 import { Check, Coffee, Flame, X, Github } from "lucide-react"
 import { useAppContext } from '@/hooks/useAppContext';
@@ -11,13 +10,33 @@ import LessonBar from "./lesson-bar"
 import RefillHeartsDialog from './refill-hearts-dialog';
 import Link from 'next/link';
 
-export default function LessonContainer( )
+interface LessonLocalizationType {
+    lang : {
+        button: {
+            check: string,
+            continue: string,
+        }
+        feedback: {
+            correct: string[],
+            wrong: string
+        }
+        questions: {
+            id: number,
+            question: string
+            answers: string[]
+            solution: string[]
+        }[]
+    }
+}
+
+
+export default function LessonContainer( { lang } : LessonLocalizationType  )
 {
     const { lives, setLives, setCoffees, streak, setStreak } = useAppContext( )
     
-    const [questions, setQuestions] = useState( defaultQuestions )
+    const [questions, setQuestions] = useState( lang.questions )
     const [wrongQuestions, setWrongQuestions] = useState<typeof currentQuestion[]>( [] )
-    const [currentQuestion, setCurrentQuestion] = useState( defaultQuestions[ 0 ] )
+    const [currentQuestion, setCurrentQuestion] = useState( lang.questions[ 0 ] )
     const [questionCheck, setQuestionCheck] = useState( { isChecking: false, isCorrect: false } )
     const [currentAnswer, setCurrentAnswer] = useState<string[]>( [ ] )
     const [showWrongMessage, setShowWrongMessage] = useState({alreadyShown: false, isShowing: false});
@@ -115,7 +134,7 @@ export default function LessonContainer( )
 
     function checkIfDateIsToday(date : Date) {
         const today = new Date();
-        return today.toDateString() === date.toDateString()
+        return today.toDateString( ) === date.toDateString( )
     }
 
     const completeLesson = ( ) => {
@@ -128,7 +147,7 @@ export default function LessonContainer( )
             return
         }
 
-        if( !checkIfDateIsToday( streak.lastDoneDate ) )
+        if( !checkIfDateIsToday( new Date( streak.lastDoneDate ) ) )
         {
             setStreak( state => ( { value: state!.value + 1, lastDoneDate: new Date( ) } ))
         }
@@ -139,7 +158,7 @@ export default function LessonContainer( )
         if( questions.length )
         {
             setQuestionCheck( questionCheck => ({...questionCheck, isChecking: false }) )
-            setProgress( 100 - (((questions.length + wrongQuestions.length) / defaultQuestions.length) * 100 ))
+            setProgress( 100 - (((questions.length + wrongQuestions.length) / lang.questions.length) * 100 ))
             setCurrentAnswer( [] )
             setCurrentQuestion( questions[0] )
         }
@@ -149,7 +168,7 @@ export default function LessonContainer( )
         if( !questions.length )
         {
             setQuestionCheck( questionCheck => ({...questionCheck, isChecking: false }) )
-            setProgress( 100 - (((questions.length + wrongQuestions.length) / defaultQuestions.length) * 100 ))
+            setProgress( 100 - (((questions.length + wrongQuestions.length) / lang.questions.length) * 100 ))
             setCurrentAnswer( [] )
             setCurrentQuestion( wrongQuestions[0] )
         }
@@ -163,7 +182,7 @@ export default function LessonContainer( )
                 <LessonBar color={getColor( )} progress={progress} lives={lives} />
                 {
                 showWrongMessage.isShowing ?
-                <div className="animate__animated animate__fadeInRightBig flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
+                <div className="animate__animated animate__fadeInRightBig flex flex-col items-center justify-center mx-auto mt-4 max-w-[800px] w-[90%]">
                     <p className="font-semibold text-2xl mx-auto">Let's correct your mistakes!</p>
                 </div>
                 :
@@ -210,27 +229,27 @@ export default function LessonContainer( )
                                 </div>
                                 {
                                     questionCheck.isCorrect ?
-                                    <p className="text-green-600 font-extrabold text-lg">Correct!</p>
+                                    <p className="text-green-600 font-extrabold text-lg">{lang.feedback.correct[Math.floor(Math.random() * lang.feedback.correct.length)]}</p>
                                     :
                                     <div className="flex flex-col">
-                                        <p className="text-red-500 mb-1 font-extrabold text-sm md:text-lg">Correct Solution:</p>
-                                        <p className="text-xs text-red-500">{currentQuestion.solution[ 0 ]}</p>
+                                        <p className="text-red-500 mb-1 font-extrabold text-sm md:text-lg">{lang.feedback.wrong}</p>
+                                        <p className="text-sm text-red-500">{currentQuestion.solution[ 0 ]}</p>
                                     </div>
                                 }
                             </div>
                             <button onClick={proceedQuestionFlow} className={cn("rounded-xl px-10 md:px-14 py-3 text-xs md:text-xl font-semibold text-white active:shadow-none active:translate-y-1", questionCheck.isCorrect ? "bg-green-600 shadow-[0px_4px_0px_0px_#15803d]" : "bg-red-500 shadow-[0px_4px_0px_0px_#b91c1c]")}>
-                                Continue
+                                { lang.button.continue }
                             </button> 
 
                         </div>
                         :
                         showWrongMessage.isShowing ?
                         <button onClick={proceedToWrongQuestions} className="rounded-xl px-14 py-3 text-xl font-semibold bg-green-500 text-white shadow-[0px_4px_0px_0px_#15803d] active:shadow-none active:translate-y-1">
-                            Continue
+                            { lang.button.continue }
                         </button> 
                         :
                         <button onClick={checkAnswer} className={cn("rounded-xl px-14 py-3 text-xl font-semibold", currentAnswer.length ? "bg-green-500 text-white shadow-[0px_4px_0px_0px_#15803d] active:shadow-none active:translate-y-1" : "bg-neutral-200 text-neutral-600 cursor-default")}>
-                            Check
+                            { lang.button.check }
                         </button>    
                     }
                     
@@ -274,7 +293,7 @@ export default function LessonContainer( )
                 </div>
                 <div className="fixed bottom-0 bg-white py-10 border-t w-full flex items-center justify-center animate__animated lg:animate__bounceInUp">
                     <Link href={"/learn"} className="rounded-xl px-14 py-3 text-xl font-semibold bg-green-500 text-white shadow-[0px_4px_0px_0px_#15803d] active:shadow-none active:translate-y-1">
-                        Continue
+                        { lang.button.continue } 
                     </Link> 
                 </div>
             </div>

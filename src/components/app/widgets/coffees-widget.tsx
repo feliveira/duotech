@@ -2,7 +2,7 @@ import { Coffee } from "lucide-react";
 import GenericWidget from "./generic-widget";
 import { useAppContext } from "@/hooks/useAppContext";
 
-export default function CoffeesWidget( )
+export default function CoffeesWidget( { lang } : { lang: {title: string, description: string[]} } )
 {
     const { coffees } = useAppContext( )
 
@@ -19,8 +19,8 @@ export default function CoffeesWidget( )
                     <Coffee className="w-8 h-8 fill-blue-500 text-blue-600" />
                 </div>
                 <div className="flex flex-col">
-                    <p className="font-semibold text-xl">Coffees</p>
-                    <p className="text-sm">You have { coffees } coffees.</p>
+                    <p className="font-semibold text-xl">{lang.title}</p>
+                    <p className="text-sm">{lang.description[0]} { coffees } {lang.description[1]}</p>
                 </div>
             </div>
         </GenericWidget>

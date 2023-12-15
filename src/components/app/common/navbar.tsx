@@ -5,12 +5,12 @@ import { Home, Bird } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-const routes = [
-    { label: "Learn", icon: Home, href: "/learn", color: "text-darkBlue"},
-]
 
-export default function Navbar( ) {
-
+export default function Navbar( { routeNames } : { routeNames: string[] } ) {
+    
+    const routes = [
+        { label: routeNames[0], icon: Home, href: "/learn", color: "text-darkBlue"},
+    ]
     const pathName = usePathname( )
 
     return (
@@ -22,7 +22,7 @@ export default function Navbar( ) {
                 </Link>
                 <div className="space-x-4 md:space-x-0 md:space-y-1 flex md:flex-col h-full items-center justify-center md:justify-start">
                     {routes.map(route => (
-                        <Link href={route.href} key={route.href} className={cn("flex p-3 justify-center md:justify-start rounded-xl transition-all delay-100", pathName === route.href ? "border-[3px] border-darkBlue bg-lightBlue text-darkBlue" : "hover:bg-neutral-200 text-gray-600" )} >
+                        <Link href={route.href} key={route.href} className={cn("flex p-3 justify-center md:justify-start rounded-xl transition-all delay-100", pathName.includes(route.href) ? "border-[3px] border-darkBlue bg-lightBlue text-darkBlue" : "hover:bg-neutral-200 text-gray-600" )} >
                             <div className="flex items-center xl:w-40">
                                 <route.icon className={cn("h-5 w-5 lg:w-6 lg:h-6 xl:mr-4", route.color)} />
                                 <p className="hidden xl:flex text-sm uppercase font-medium">{route.label}</p>

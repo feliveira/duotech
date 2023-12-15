@@ -1,0 +1,103 @@
+{
+    "learn": {
+        "topicHeader": {
+            "title": "Unit 1",
+            "description": "Discussing pertinent topics",
+            "guide": "Guidebook"
+        },
+        "topic": {
+            "title": "All you need to know",
+            "description": "Lesson 1 of 1",
+            "start": "Start +100 coffees"
+        }
+    },
+    "navbar": {
+        "routes": ["learn"]
+    },
+    "widgets": {
+        "coffees": {
+            "title": "Coffees",
+            "description": ["You have", "coffee(s)."]
+        },
+        "streak": {
+            "title": "Streak",
+            "description": ["streak day(s)"]
+        },
+        "lives": {
+            "title": "Hearts",
+            "description": ["Refill Hearts"]
+        }
+    },
+    "lesson": {
+        "button": {
+            "check": "Check",
+            "continue": "Continue"
+        },
+        "feedback": {
+            "correct": ["Correct!", "That's it!", "Awesome!", "Fantastic!", "Great job!", "Bravo!"],
+            "wrong": "Correct Solution:"
+        },
+        "questions": [
+            {
+                "id": 1,
+                "question": "Best way to declare variables?",
+                "answers": ["let", "const", "var", "it depends"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 2,
+                "question": "Best media query breakpoint strategy?",
+                "answers": ["mobile-first", "desktop-first", "it depends", "fluid"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 3,
+                "question": "Best framework for frontend?",
+                "answers": ["React", "Vue", "Angular", "it depends", "Svelte", "HTMX"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 4,
+                "question": "Best framework for backend?",
+                "answers": ["Django", "Laravel", "Spring", "Express", "it depends"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 5,
+                "question": "Best database?",
+                "answers": ["MongoDB", "it depends", "MySQL", "PostgreSQL"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 6,
+                "question": "Best authentication method?",
+                "answers": ["OAuth", "JWT", "it depends", "API key"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 7,
+                "question": "Best build tool?",
+                "answers": ["Webpack", "Parcel", "Rollup", "Gulp", "Browserify", "it depends"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 8,
+                "question": "What is the best development methodology?",
+                "answers": ["waterfall", "scrum", "extreme programming", "it depends"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 9,
+                "question": "Best cloud platform?",
+                "answers": ["AWS", "GCP", "Azure", "it depends"],
+                "solution": ["it depends"]
+            },
+            {
+                "id": 10,
+                "question": "Best documentation format?",
+                "answers": ["Markdown", "HTML", "Docx", "it depends"],
+                "solution": ["it depends"]
+            }
+        ]
+    }
+}

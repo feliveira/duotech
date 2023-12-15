@@ -7,12 +7,13 @@ import Link from "next/link";
 export interface TopicProps {
     title: string, 
     description: string,
+    start: string,
     backgroundColor: string,
     textColor: string, 
 
 }
 
-export default function Topic( {title, description, backgroundColor, textColor} : TopicProps )
+export default function Topic( {title, description, start, backgroundColor, textColor} : TopicProps )
 {
     return (
         <div>
@@ -27,7 +28,7 @@ export default function Topic( {title, description, backgroundColor, textColor} 
                         <p className="font-semibold text-lg">{ title }</p>
                         <p className="font-light mb-4">{ description }</p>
                         <Link href={"/lesson"} prefetch={false} className={cn("border-[3px] border-neutral-700 bg-white w-full py-3 rounded-2xl flex items-center mx-auto text-white transition-all hover:opacity-80 shadow-[0px_4px_0px_0px_#404040] active:shadow-none active:translate-y-1")}>
-                            <p className={cn("text-sm lg:text-base font-semibold uppercase mx-auto", textColor)}>Start +100 coffees</p>
+                            <p className={cn("text-sm lg:text-base font-semibold uppercase mx-auto", textColor)}>{ start }</p>
                         </Link>
                     </div>
                 </PopoverContent>
