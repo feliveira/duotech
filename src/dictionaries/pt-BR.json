@@ -1,4 +1,8 @@
 {
+    "home": {
+        "noStreakTitle": "Boas-vindas ao Duotech! Selecione um curso para prosseguir",
+        "streakTitle": "Continue aprendendo!"
+    },
     "learn": {
         "topicHeader": {
             "title": "Unidade 1",
@@ -29,6 +33,8 @@
         }
     },
     "lesson": {
+        "title": "Responda a seguinte pergunta",
+        "correct": "Vamos corrigir os erros!",
         "button": {
             "check": "Verificar",
             "continue": "Continuar"
@@ -36,6 +42,30 @@
         "feedback": {
             "correct": ["Certo!", "É isso aí!", "Incrível!", "Fantástico!", "Boa!", "Parabéns!"],
             "wrong": "Solução Correta:"
+        },
+        "finish": {
+            "title": "Parabéns!",
+            "coffees": "Ganhos de Café",
+            "streak": "Ofensiva",
+            "github": "Veja mais projetos"
+        },
+        "refill": {
+            "title": "Você ficou sem corações!",
+            "main_description": "Use seus cafés para comprar corações.",
+            "secondary_description": "Cafés insuficientes? Sem problemas! Aqui está um pequeno impulso para sua lição desta vez. Aproveite!",
+            "coffees": "cafés",
+            "lives": "vidas",
+            "button": {
+                "continue": "Continuar",
+                "refill": "Recuperar",
+                "cancel": "Encerrar"
+            }
+        },
+        "bar": {
+            "title": "Espera, não vá!",
+            "description": "Você está indo muito bem! Se desistir agora, perderá seu progresso.",
+            "keep": "Continuar Aprendendo",
+            "end": "Encerrar Sessão"
         },
         "questions": [
             {

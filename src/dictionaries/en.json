@@ -1,4 +1,8 @@
 {
+    "home": {
+        "noStreakTitle": "Welcome to Duotech! Select a course to proceed",
+        "streakTitle": "Keep learning!"
+    },
     "learn": {
         "topicHeader": {
             "title": "Unit 1",
@@ -29,6 +33,8 @@
         }
     },
     "lesson": {
+        "title": "Answer the following question",
+        "correct": "Let's correct the mistakes!",
         "button": {
             "check": "Check",
             "continue": "Continue"
@@ -36,6 +42,30 @@
         "feedback": {
             "correct": ["Correct!", "That's it!", "Awesome!", "Fantastic!", "Great job!", "Bravo!"],
             "wrong": "Correct Solution:"
+        },
+        "finish": {
+            "title": "Congratulations!",
+            "coffees": "Coffees Gained",
+            "streak": "Streak",
+            "github": "See more projects"
+        },
+        "refill": {
+            "title": "You ran out of hearts!",
+            "main_description": "Use your coffees to buy hearts.",
+            "secondary_description": "Insufficient coffees? No worries! Here's a little boost to fuel your lesson this time. Enjoy!",
+            "coffees": "coffees",
+            "lives": "hearts",
+            "button": {
+                "continue": "Continue",
+                "refill": "Refill",
+                "cancel": "End session"
+            }
+        },
+        "bar": {
+            "title": "Wait, don't go!",
+            "description": "You're right on track! If you quit now, you'll lose your progress.",
+            "keep": "Keep Learning",
+            "end": "End Session"
         },
         "questions": [
             {

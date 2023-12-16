@@ -12,6 +12,8 @@ import Link from 'next/link';
 
 interface LessonLocalizationType {
     lang : {
+        title: string,
+        correct: string,
         button: {
             check: string,
             continue: string,
@@ -19,6 +21,30 @@ interface LessonLocalizationType {
         feedback: {
             correct: string[],
             wrong: string
+        },
+        finish: {
+            title: string,
+            coffees: string,
+            streak: string,
+            github: string
+        },
+        refill: {
+            title: string,
+            main_description: string,
+            secondary_description: string,
+            coffees: string,
+            lives: string,
+            button: {
+                continue: string,
+                refill: string,
+                cancel: string,
+            }
+        },
+        bar: {
+            title: string,
+            description: string,
+            keep: string,
+            end: string
         }
         questions: {
             id: number,
@@ -157,20 +183,20 @@ export default function LessonContainer( { lang } : LessonLocalizationType  )
     useEffect(( ) => {
         if( questions.length )
         {
-            setQuestionCheck( questionCheck => ({...questionCheck, isChecking: false }) )
             setProgress( 100 - (((questions.length + wrongQuestions.length) / lang.questions.length) * 100 ))
             setCurrentAnswer( [] )
             setCurrentQuestion( questions[0] )
+            setQuestionCheck( questionCheck => ({...questionCheck, isChecking: false }) )
         }
     }, [questions])
 
     useEffect(( ) => {
         if( !questions.length )
         {
-            setQuestionCheck( questionCheck => ({...questionCheck, isChecking: false }) )
             setProgress( 100 - (((questions.length + wrongQuestions.length) / lang.questions.length) * 100 ))
             setCurrentAnswer( [] )
             setCurrentQuestion( wrongQuestions[0] )
+            setQuestionCheck( questionCheck => ({...questionCheck, isChecking: false }) )
         }
     }, [wrongQuestions])
 
@@ -179,16 +205,16 @@ export default function LessonContainer( { lang } : LessonLocalizationType  )
         {
             (questions.length > 0 || wrongQuestions.length > 0) ?
             <div className="flex flex-col items-center mx-auto w-full">
-                <LessonBar color={getColor( )} progress={progress} lives={lives} />
+                <LessonBar lang={lang.bar} color={getColor( )} progress={progress} lives={lives} />
                 {
                 showWrongMessage.isShowing ?
                 <div className="animate__animated animate__fadeInRightBig flex flex-col items-center justify-center mx-auto mt-4 max-w-[800px] w-[90%]">
-                    <p className="font-semibold text-2xl mx-auto">Let's correct your mistakes!</p>
+                    <p className="font-semibold text-2xl mx-auto">{ lang.correct }</p>
                 </div>
                 :
                 <div key={ currentQuestion.id } className="animate__animated animate__fadeInRightBig animate__faster flex flex-col mx-auto mt-4 max-w-[800px] w-[90%]">
                     <div className="mx-auto">
-                        <h1 className="text-2xl text-neutral-700 font-semibold mb-4">Answer the following question</h1>
+                        <h1 className="text-2xl text-neutral-700 font-semibold mb-4">{ lang.title }</h1>
                         <div className="flex space-x-2 px-2">
                             <span className="h-36 min-w-[112px] w-28 bg-neutral-400" />
                             <p className="rounded-xl border h-fit p-4 max-w-[300px]">{ currentQuestion.question }</p>
@@ -260,10 +286,10 @@ export default function LessonContainer( { lang } : LessonLocalizationType  )
                 <div className="flex flex-col lg:flex-row lg:justify-between w-full h-full items-center lg:items-start justify-center gap-4 lg:gap-0 mb-16">
                     <div className="w-[90%] max-w-[400px] lg:max-w-full lg:w-1/2">
                         <div className="w-full lg:h-[500px] flex flex-col items-center justify-center border p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tr-none text-center">
-                            <p className="text-darkBlue font-semibold text-2xl mb-4 animate__animated animate__fadeInDown">Congratulations!</p>
+                            <p className="text-darkBlue font-semibold text-2xl mb-4 animate__animated animate__fadeInDown">{lang.finish.title}</p>
                             <div className="flex flex-col lg:flex-row items-center lg:justify-start justify-center gap-2 animate__animated animate__fadeInLeft">
                                 <div className="w-48 p-1 bg-darkBlue rounded-xl flex flex-col items-center justify-center">
-                                    <p className="text-white font-semibold mb-2 text-sm">Coffees Gained</p>
+                                    <p className="text-white font-semibold mb-2 text-sm">{lang.finish.coffees}</p>
                                     <div className="flex items-center justify-center bg-white rounded-[8px] w-full p-4 space-x-2">
                                         <Coffee className="w-8 h-8 text-blue-600 fill-blue-500" />
                                         <p className="text-blue-600 font-semibold">+100</p>
@@ -272,7 +298,7 @@ export default function LessonContainer( { lang } : LessonLocalizationType  )
                                 {
                                     streak != null &&
                                     <div className="w-48 p-1 bg-orange-600 rounded-xl flex flex-col items-center justify-center">
-                                        <p className="text-white font-semibold mb-2 text-sm">Streak</p>
+                                        <p className="text-white font-semibold mb-2 text-sm">{lang.finish.streak}</p>
                                         <div className="flex items-center justify-center bg-white rounded-[8px] w-full p-4 space-x-2">
                                             <Flame className="w-8 h-8 text-orange-600 fill-orange-500" />
                                             <p className="text-orange-600 font-semibold">{ streak.value }</p>
@@ -286,7 +312,7 @@ export default function LessonContainer( { lang } : LessonLocalizationType  )
                         <div className="lg:h-[500px] flex flex-col items-center justify-center border p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tl-none text-center">
                             <a href="https://github.com/feliveira" className="flex flex-col items-center justify-center hover:scale-105 transition-all animate__animated animate__fadeInRight" target="_blank">
                                 <Github className="text-darkBlue w-16 h-16" />
-                                <p className="font-semibold text-darkBlue">See more projects</p>
+                                <p className="font-semibold text-darkBlue">{lang.finish.github}</p>
                             </a>
                         </div>
                     </div>
@@ -298,6 +324,6 @@ export default function LessonContainer( { lang } : LessonLocalizationType  )
                 </div>
             </div>
         }
-        <RefillHeartsDialog />
+        <RefillHeartsDialog lang={lang.refill} />
         </>)
 }
