@@ -28,8 +28,8 @@ export default function GenericWidget ( { icon: Icon, iconFill, value, color, is
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <Popover open={isOpen} onOpenChange={setIsOpen} defaultOpen={true}>
                 <PopoverTrigger asChild>
-                <div className={cn("cursor-default group flex items-center lg:hover:bg-neutral-100 rounded-lg px-2 py-1", isActive ? color : "text-gray-600") }>
-                    <Icon className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", isActive ? iconFill : "fill-gray-500" )} />
+                <div className={cn("cursor-default group flex items-center lg:hover:bg-neutral-100 rounded-lg px-2 py-1", isActive ? color : "text-eel") }>
+                    <Icon className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", isActive ? iconFill : "fill-wolf" )} />
                     { value != null && (
                         <p className="text-xs lg:text-sm xl:text-lg ml-2 font-medium">
                             {value}

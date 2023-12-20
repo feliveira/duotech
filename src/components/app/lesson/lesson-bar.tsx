@@ -29,7 +29,6 @@ export default function LessonBar( { progress = -1, color, lives, lang } : Lesso
 
     const handleCancelLesson = ( action?: string ) => {
 
-        console.log("entrou aqui", action)
         if( action === "keep" )
         {
             setIsOpen( false )
@@ -52,18 +51,18 @@ export default function LessonBar( { progress = -1, color, lives, lang } : Lesso
                 <AlertDialogTrigger><X className="text-neutral-400 w-8 h-8" /></AlertDialogTrigger>
                 <AlertDialogContent className="max-w-[400px] w-[90%]">
                     <AlertDialogHeader className="text-center flex flex-col items-center">
-                        <HeartCrack className="text-red-600 fill-red-500 mx-auto w-16 h-16 my-4" />
-                        <AlertDialogTitle className="text-2xl text-neutral-800">{lang.title}</AlertDialogTitle>
-                        <AlertDialogDescription className="text-center text-neutral-600 text-base">
+                        <HeartCrack className="text-fireant fill-cardinal mx-auto w-16 h-16 my-4" />
+                        <AlertDialogTitle className="text-2xl text-eel">{lang.title}</AlertDialogTitle>
+                        <AlertDialogDescription className="text-center text-eel text-base">
                             {lang.description}
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <div className="flex flex-col items-center mx-auto space-y-2 w-full">
-                            <AlertDialogAction onClick={( ) => handleCancelLesson( "keep" )} className="mt-2 bg-darkBlue hover:bg-blue-500 shadow-[0px_4px_0px_0px_#2563eb] active:shadow-none active:translate-y-1 text-white text-lg rounded-xl px-4 py-6 mx-auto w-full max-w-[400px] uppercase">
+                            <AlertDialogAction onClick={( ) => handleCancelLesson( "keep" )} className="mt-2 bg-whale hover:bg-macaw shadow-[0px_4px_0px_0px_#168DC5] active:shadow-none active:translate-y-1 text-white text-lg rounded-xl px-4 py-6 mx-auto w-full max-w-[400px] uppercase">
                                 {lang.keep}
                             </AlertDialogAction>
-                            <AlertDialogCancel onClick={( ) => handleCancelLesson( "end" )} className="text-red-600 text-lg border-none mx-auto w-full max-w-[400px] hover:text-red-600 uppercase">
+                            <AlertDialogCancel onClick={( ) => handleCancelLesson( "end" )} className="text-fireant text-lg border-none mx-auto w-full max-w-[400px] hover:text-fireant uppercase">
                                 {lang.end}
                             </AlertDialogCancel>
                         </div>
@@ -71,10 +70,10 @@ export default function LessonBar( { progress = -1, color, lives, lang } : Lesso
                 </AlertDialogContent>
             </AlertDialog>
 
-            <Progress color={color} className={cn("w-[60%] bg-neutral-200")} value={ progress } />
+            <Progress color={color} className={cn("w-[60%] bg-swan")} value={ progress } />
             <div className="flex items-center space-x-2">
-                <Heart className="w-8 h-8 fill-red-500 text-red-600" />
-                <p className="text-lg ml-2 font-medium text-red-600">{lives}</p>
+                <Heart className="w-8 h-8 fill-cardinal text-fireant" />
+                <p className="text-lg ml-2 font-medium text-fireant">{lives}</p>
             </div>
         </div>
     )

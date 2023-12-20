@@ -14,7 +14,7 @@ export default async function Lesson( { params: {lang} } : PageParams ) {
 
   return (
     <div className="w-full min-h-screen overflow-y-auto overflow-x-hidden bg-white flex flex-col items-center pt-16">
-        <LessonContainer lang={dictionary.lesson} />
+        <LessonContainer lang={dictionary.lesson} locale={lang} />
     </div>
   )
 }

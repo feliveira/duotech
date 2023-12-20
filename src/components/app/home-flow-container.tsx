@@ -25,22 +25,22 @@ export default function HomeFlowContainer( { lang } : { lang: HomeFlowLangType }
                 streak != null &&
                 <div className="flex items-center justify-center gap-4 mb-8">
                     <div className="flex items-center gap-1 cursor-default">
-                        <Flame className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", streak.value > 0 ? "fill-orange-500 text-orange-600" : "fill-gray-500" )} />
-                        <p className={cn("text-xs lg:text-sm xl:text-lg font-medium", streak.value > 0 && "text-orange-600")}>
+                        <Flame className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", streak.value > 0 ? "fill-lion text-fox" : "fill-wolf" )} />
+                        <p className={cn("text-xs lg:text-sm xl:text-lg font-medium", streak.value > 0 && "text-fox")}>
                             {streak.value}
                         </p>
                     </div>
 
                     <div className="flex items-center gap-1 cursor-default">
-                        <Coffee className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", coffees > 0 ? "fill-blue-500 text-blue-600" : "fill-gray-500" )} />
-                        <p className={cn("text-xs lg:text-sm xl:text-lg font-medium", coffees > 0 && "text-blue-600")}>
+                        <Coffee className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", coffees > 0 ? "fill-macaw text-whale" : "fill-wolf" )} />
+                        <p className={cn("text-xs lg:text-sm xl:text-lg font-medium", coffees > 0 && "text-whale")}>
                             {coffees}
                         </p>
                     </div>
 
                     <div className="flex items-center gap-1 cursor-default">
-                        <Heart className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", lives > 0 ? "fill-red-500 text-red-600" : "fill-gray-500" )} />
-                        <p className={cn("text-xs lg:text-sm xl:text-lg font-medium", lives > 0 && "text-red-600")}>
+                        <Heart className={cn("w-5 h-5 lg:w-6 lg:h-6 xl:w-8 xl:h-8", lives > 0 ? "fill-cardinal text-fireant" : "fill-wolf" )} />
+                        <p className={cn("text-xs lg:text-sm xl:text-lg font-medium", lives > 0 && "text-fireant")}>
                             {lives}
                         </p>
                     </div>

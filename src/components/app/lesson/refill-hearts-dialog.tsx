@@ -48,13 +48,13 @@ export default function RefillHeartsDialog( { lang } : { lang: RefillLangType } 
             <AlertDialog open={true}>
                 <AlertDialogContent className="w-[90%]">
                     <AlertDialogHeader className="text-center flex flex-col items-center">
-                    <AlertDialogTitle className="text-2xl text-neutral-800">{lang.title}</AlertDialogTitle>
-                    <AlertDialogDescription className="text-center text-neutral-600 text-base">
+                    <AlertDialogTitle className="text-2xl text-eel">{lang.title}</AlertDialogTitle>
+                    <AlertDialogDescription className="text-center text-eel text-base">
                         {isShowingGiveLives ? 
                         <div className="flex flex-col items-center justify-center">
                             <p>{lang.secondary_description}</p>
-                            <p className="text-blue-600 font-semibold mt-4 text-lg">+100 {lang.coffees}</p>
-                            <p className="text-red-600 font-semibold mb-2 text-lg">+3 {lang.lives}</p> 
+                            <p className="text-narwhal font-semibold mt-4 text-lg">+100 {lang.coffees}</p>
+                            <p className="text-fireant font-semibold mb-2 text-lg">+3 {lang.lives}</p> 
                         </div>
                         : 
                         `${lang.main_description}`
@@ -64,22 +64,22 @@ export default function RefillHeartsDialog( { lang } : { lang: RefillLangType } 
                     <AlertDialogFooter>
                         {
                             isShowingGiveLives ?
-                            <AlertDialogAction onClick={giveLives} className="mt-2 bg-green-500 hover:bg-green-600 shadow-[0px_4px_0px_0px_#15803d] active:shadow-none active:translate-y-1 text-white text-lg rounded-xl px-4 py-6 mx-auto w-full max-w-[400px] uppercase">
+                            <AlertDialogAction onClick={giveLives} className="mt-2 bg-owl hover:bg-owl shadow-[0px_4px_0px_0px#58A700] active:shadow-none active:translate-y-1 text-white text-lg rounded-xl px-4 py-6 mx-auto w-full max-w-[400px] uppercase">
                                 {lang.button.continue}
                             </AlertDialogAction>
                             :
                             <div className="flex flex-col items-center mx-auto space-y-2 w-full">
-                                <AlertDialogAction onClick={reffilHearts} className="flex justify-between mt-2 bg-white hover:bg-white hover:scale-[1.02] transition-all shadow-[0px_4px_0px_0px_#E5E5E5] border active:shadow-none active:translate-y-1 text-neutral-800 rounded-xl px-4 py-6 mx-auto w-full max-w-[400px] uppercase">
+                                <AlertDialogAction onClick={reffilHearts} className="flex justify-between mt-2 bg-white hover:bg-white hover:scale-[1.02] transition-all shadow-[0px_4px_0px_0px_#E5E5E5] border active:shadow-none active:translate-y-1 text-eel rounded-xl px-4 py-6 mx-auto w-full max-w-[400px] uppercase">
                                     <div className="flex items-center space-x-2">
-                                        <Heart className="w-4 h-4 fill-red-500 text-red-600" />
+                                        <Heart className="w-4 h-4 fill-cardinal text-fireant" />
                                         <p>{lang.button.refill}</p>
                                     </div>
                                     <div className="flex items-center space-x-1">
-                                        <Coffee className="w-4 h-4 fill-blue-500 text-blue-600" />
-                                        <p className="text-blue-600">{(5 - lives) * 100}</p>
+                                        <Coffee className="w-4 h-4 fill-macaw text-whale" />
+                                        <p className="text-whale">{(5 - lives) * 100}</p>
                                     </div>
                                 </AlertDialogAction>
-                                <AlertDialogCancel onClick={( ) => router.push("/learn")} className="text-red-600 border-none mx-auto w-full max-w-[400px] hover:text-red-600 uppercase">
+                                <AlertDialogCancel onClick={( ) => router.push("/learn")} className="text-fireant border-none mx-auto w-full max-w-[400px] hover:text-fireant uppercase">
                                     {lang.button.cancel}
                                 </AlertDialogCancel>
                             </div>
