@@ -1,7 +1,4 @@
 import { cn } from "@/lib/utils"
-import { BookText } from "lucide-react"
-import Link  from "next/link"
-
 
 interface TopicHeaderProps {
     title: string, 

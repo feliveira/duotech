@@ -218,7 +218,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
                 <LessonBar lang={lang.bar} color={getColor( )} progress={progress} lives={lives} />
                 {
                 showWrongMessage.isShowing ?
-                <div className="animate__animated animate__fadeInRightBig flex flex-col items-center justify-center mx-auto mt-4 max-w-[800px] w-[90%]">
+                <div className="animate__animated animate__fadeInRightBig flex flex-col items-center justify-center mx-auto mt-16 max-w-[800px] w-[90%]">
                     <p className="font-semibold text-2xl mx-auto">{ lang.correct }</p>
                 </div>
                 :
@@ -250,7 +250,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
                     </div>
                 </div>
                 }
-                <div className={cn("fixed bottom-0 py-10 border-t w-full flex items-center justify-center animate__animated animate__bounceInUp", questionCheck.isChecking ? questionCheck.isCorrect ? "bg-seasponge" : "bg-red-200" : "bg-white")}>
+                <div className={cn("flex-1 fixed bottom-0 py-10 border-t w-full flex items-center justify-center animate__animated animate__bounceInUp", questionCheck.isChecking ? questionCheck.isCorrect ? "bg-seasponge" : "bg-red-200" : "bg-white")}>
                     {
                         questionCheck.isChecking && !showWrongMessage.isShowing ?
                         <div className="flex justify-between items-center max-w-[800px] w-[90%] animate__animated animate__bounceInUp animate__faster">
@@ -284,7 +284,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
                             { lang.button.continue }
                         </button> 
                         :
-                        <button onClick={checkAnswer} className={cn("rounded-[16px] px-14 py-3 text-xl font-semibold", currentAnswer.length ? "bg-owl text-white shadow-[0px_4px_0px_0px#58A700] active:shadow-none active:translate-y-1" : "bg-swan text-wolf cursor-default")}>
+                        <button onClick={checkAnswer} disabled={currentAnswer.length === 0} className={cn("rounded-[16px] px-14 py-3 text-xl font-semibold", currentAnswer.length ? "bg-owl text-white shadow-[0px_4px_0px_0px#58A700] active:shadow-none active:translate-y-1" : "bg-swan text-wolf cursor-default")}>
                             { lang.button.check }
                         </button>    
                     }
@@ -295,7 +295,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
             <div className="relative w-full h-full flex flex-col justify-between p-2">
                 <div className="flex flex-col lg:flex-row lg:justify-between w-full h-full items-center lg:items-start justify-center gap-4 lg:gap-0 mb-16">
                     <div className="w-[90%] max-w-[400px] lg:max-w-full lg:w-1/2">
-                        <div className="w-full lg:h-[500px] flex flex-col items-center justify-center border p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tr-none text-center">
+                        <div className="w-full lg:h-[500px] 2xl:h-[850px] flex flex-col items-center justify-center border lg:border-none p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tr-none text-center">
                             <p className="text-whale font-semibold text-2xl mb-4 animate__animated animate__fadeInDown">{lang.finish.title}</p>
                             <div className="flex flex-col lg:flex-row items-center lg:justify-start justify-center gap-2 animate__animated animate__fadeInLeft">
                                 <div className="w-48 p-1 bg-whale rounded-xl flex flex-col items-center justify-center">
@@ -319,7 +319,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
                         </div>
                     </div>
                     <div className="w-[90%] max-w-[400px] lg:max-w-full lg:w-1/2">
-                        <div className="lg:h-[500px] flex flex-col items-center justify-center border p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tl-none text-center">
+                        <div className="lg:h-[500px] 2xl:h-[850px] flex flex-col items-center justify-center border lg:border-none p-4 shadow-[0px_4px_0px_0px_#E5E5E5] rounded-md rounded-tl-none text-center">
                             <a href="https://github.com/feliveira" className="flex flex-col items-center justify-center hover:scale-105 transition-all animate__animated animate__fadeInRight" target="_blank">
                                 <Github className="text-whale w-16 h-16" />
                                 <p className="font-semibold text-whale">{lang.finish.github}</p>
@@ -327,7 +327,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
                         </div>
                     </div>
                 </div>
-                <div className="fixed bottom-0 bg-white py-10 border-t w-full flex items-center justify-center animate__animated lg:animate__bounceInUp">
+                <div className="flex-1 fixed bottom-0 bg-white py-10 border-t w-full flex items-center justify-center animate__animated lg:animate__bounceInUp">
                     <Link href={locale === "pt" ? "/pt/learn" : "/en/learn" } className="rounded-[16px] px-14 py-3 text-xl font-semibold bg-owl text-white shadow-[0px_4px_0px_0px#58A700] active:shadow-none active:translate-y-1">
                         { lang.button.continue } 
                     </Link> 

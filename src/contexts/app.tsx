@@ -22,11 +22,11 @@ export function AppContextProvider({ children } : { children: React.ReactNode })
     useEffect(() => {
         if( !isInitialLoad )
         {
-            localStorage.setItem( 'coffees', coffees.toString( ) );
-            localStorage.setItem( 'lives', lives.toString( ) );
-            localStorage.setItem( 'streak', JSON.stringify(streak) );
+            localStorage.setItem( 'coffees', coffees.toString( ) )
+            localStorage.setItem( 'lives', lives.toString( ) )
+            localStorage.setItem( 'streak', JSON.stringify( streak ) )
         }
-    }, [coffees, lives, streak]);
+    }, [coffees, lives, streak])
     
     useEffect(() => {
     
@@ -35,23 +35,37 @@ export function AppContextProvider({ children } : { children: React.ReactNode })
         const storedStreak = localStorage.getItem('streak');
 
         if ( storedCoffees ) {
-            setCoffees(parseInt(storedCoffees, 10));
+            setCoffees( parseInt( storedCoffees, 10 ) );
         }
 
         if ( storedLives ) {
-            setLives(parseInt(storedLives, 10));
+            setLives( parseInt( storedLives, 10 ) );
         }
 
         if ( storedStreak ) {
-            setStreak(JSON.parse(storedStreak));
+            const parsedStreak = JSON.parse( storedStreak );
+        
+            if( parsedStreak !== null )
+            {
+                const today = new Date( )
+                const lastDoneDate = new Date( parsedStreak.lastDoneDate )
+                const dateDifferenceInDays = Math.floor(
+                    ( today.getTime( ) - lastDoneDate.getTime( ) ) / ( 24 * 60 * 60 * 1000 )
+                )
+            
+                setStreak( ( dateDifferenceInDays >= 2 || dateDifferenceInDays < 0 ) ? null : parsedStreak )
+            }
+
+            setStreak( null )
+
         }
 
         setIsInitialLoad( false )
-    }, []);
+    }, [])
 
 
     return( 
-        <AppContext.Provider value={providerValues}>
+        <AppContext.Provider value={ providerValues }>
             { children }
         </AppContext.Provider>
     )
