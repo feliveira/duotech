@@ -2,8 +2,9 @@
 import { useAppContext } from "@/hooks/useAppContext"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import US from "../../../public/static/flags/us.svg"
-import BR from "../../../public/static/flags/br.svg"
+import US from "/public/static/flags/us.svg"
+import BR from "/public/static/flags/br.svg"
+import IDLE from "/public/static/character/idle.png"
 import Image from "next/image"
 import { Coffee, Flame, Heart } from "lucide-react"
 
@@ -19,7 +20,7 @@ export default function HomeFlowContainer( { lang } : { lang: HomeFlowLangType }
 
     return(
         <div className="flex flex-col items-center w-full">
-            <span className="h-36 min-w-[112px] w-28 bg-neutral-400" />
+            <Image src={IDLE} className="h-36 object-cover min-w-[112px] w-40" alt="" />
             <h1 className={cn("text-2xl font-semibold text-center mt-4", streak === null ? "mb-12" : "mb-2")}>{ streak === null ? lang.noStreakTitle : lang.streakTitle }</h1>
             {
                 streak != null &&

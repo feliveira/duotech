@@ -9,6 +9,10 @@ import { useAppContext } from '@/hooks/useAppContext';
 import LessonBar from "./lesson-bar"
 import RefillHeartsDialog from './refill-hearts-dialog';
 import Link from 'next/link';
+import IDLE from "/public/static/character/idle.png"
+import CORRECT from "/public/static/character/correct.png"
+import WRONG from "/public/static/character/wrong.png"
+import Image from 'next/image';
 
 interface LessonLocalizationType {
     lang : {
@@ -226,7 +230,7 @@ export default function LessonContainer( { lang, locale } : LessonLocalizationTy
                     <div className="mx-auto">
                         <h1 className="text-2xl text-eel font-semibold mb-4">{ lang.title }</h1>
                         <div className="flex space-x-2 px-2">
-                            <span className="h-36 min-w-[112px] w-28 bg-neutral-400" />
+                            <Image src={questionCheck.isChecking ? questionCheck.isCorrect ? CORRECT : WRONG : IDLE} className="h-36 object-cover min-w-[112px] w-40" alt="" />
                             <p className="rounded-xl border h-fit p-4 max-w-[300px]">{ currentQuestion.question }</p>
                         </div>
                     </div>
